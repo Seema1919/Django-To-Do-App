@@ -89,8 +89,9 @@
             <input type="text" name="title" value="{{ task.title }}" placeholder="Title" required>
             <textarea name="description" placeholder="Description (optional)"></textarea>
             <label>
-                <input type="checkbox" name="completed" {% if task.completed %} checked { % endif % }> Completed
-            </label>
+    <input type="checkbox" name="completed" {% if task.completed %}checked{% endif %}> Completed
+           </label>
+
             <button type="submit">Save</button>
         </form>
         <a href="{% url 'task_list' %}">← Back to Tasks</a>
