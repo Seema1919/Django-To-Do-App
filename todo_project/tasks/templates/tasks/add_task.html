@@ -2,15 +2,72 @@
 <html>
 <head>
     <title>Add Task</title>
+    <style>
+        /* Reset default spacing and use full height */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center; /* Horizontally center */
+            align-items: center;     /* Vertically center */
+            background-color: #f9f9f9;
+        }
+
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h1>Add Task</h1>
-    <form method="POST">
-        {% csrf_token %}
-        <input type="text" name="title" placeholder="Title" required>
-        <textarea name="description" placeholder="Description (optional)"></textarea>
-        <button type="submit">Add</button>
-    </form>
-    <a href="{% url 'task_list' %}">Back</a>
+    <div class="form-container">
+        <h1>Add Task</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="title" placeholder="Title" required>
+            <textarea name="description" placeholder="Description (optional)"></textarea>
+            <button type="submit">Add</button>
+        </form>
+        <a href="{% url 'task_list' %}">Back</a>
+    </div>
 </body>
 </html>

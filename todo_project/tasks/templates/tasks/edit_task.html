@@ -2,18 +2,99 @@
 <html>
 <head>
     <title>Edit Task</title>
+    <style>
+        /* Make the whole page use full height and center content */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f2f5;
+        }
+
+        .form-container {
+            background: white;
+            padding: 30px 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 320px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: start;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #007bff;
+            font-size: 14px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h1>Edit Task</h1>
-    <form method="POST">
-        {% csrf_token %}
-        <input type="text" name="title" value="{{ task.title }}" required>
-        <textarea name="description">{{ task.description }}</textarea>
-        <label>
-            <input type="checkbox" name="completed" {% if task.completed %}checked{% endif %}> Completed
-        </label>
-        <button type="submit">Save</button>
-    </form>
-    <a href="{% url 'task_list' %}">Back</a>
+    <div class="form-container">
+        <h1>Edit Task</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="title" value="{{ task.title }}" placeholder="Title" required>
+            <textarea name="description" placeholder="Description (optional)"></textarea>
+            <label>
+                <input type="checkbox" name="completed" {% if task.completed %} checked { % endif % }> Completed
+            </label>
+            <button type="submit">Save</button>
+        </form>
+        <a href="{% url 'task_list' %}">← Back to Tasks</a>
+    </div>
 </body>
 </html>
+>
